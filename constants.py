@@ -20,3 +20,5 @@ PREFIXES = {'exa', 'peta', 'tera', 'giga', 'mega', 'kilo', 'hecto', 'deka', 'dec
             'milli', 'micro', 'nano', 'pico', 'femto', 'atto'}
 
 BOT_HANDLE = "@convertbot"
+
+HELP_MESSAGE = "Use: {} <num> <unit_to_convert> <result_unit>".format(BOT_HANDLE)

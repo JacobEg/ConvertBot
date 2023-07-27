@@ -7,11 +7,14 @@ from conversion import *
 def write_help():
     pass
 
+def is_valid_unit(unit: str):
+    pass
+
 def parse_text(msg: str):
     '''
     @param - msg : str - the message in the Discord server
-        should be of the format '@bothandle <num> <unit> <unit>'
-    @return list of tuples where index 0 is the original number, index 1 is the original unit,
+        should be of the format '@bothandle <num> <unit_to_convert> <result_unit>'
+    @return tuple where index 0 is the original number, index 1 is the original unit,
         index 2 is the converted number, index 3 is the converted unit
 
     If badly formatted, write help message explaining how to use the bot and return None.
@@ -23,14 +26,14 @@ def parse_text(msg: str):
         return None
     units_to_print = None
     unit = msg_list[2]
-    if unit in UNITS:
+    if is_valid_unit(unit):
         num = msg_list[1]
         if INTEGER_REGEX.match(num) or FLOAT_REGEX.match(num):
             num = float(num)
         else:
             raise ValueError("Bad number to convert")
         converted_unit = msg_list[3]
-        if converted_unit not in UNITS:
+        if not is_valid_unit(converted_unit):
             raise ValueError("Bad result unit")
         converted_num = convert(num, unit, converted_unit)
         units_to_print = (num, unit, converted_num, converted_unit)
