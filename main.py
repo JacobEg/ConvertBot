@@ -4,26 +4,39 @@ from conversion import *
 
 # TODO: implement connecting to Discord server
 
+def write_help():
+    pass
+
 def parse_text(msg: str):
     '''
     @param - msg : str - the message in the Discord server
+        should be of the format '@bothandle <num> <unit> <unit>'
     @return list of tuples where index 0 is the original number, index 1 is the original unit,
-    index 2 is the converted number, index 
+        index 2 is the converted number, index 3 is the converted unit
+
+    If badly formatted, write help message explaining how to use the bot and return None.
+    If invalid number or unit(s), raise ValueError explaining the error.
     '''
-    units_to_print = []
     msg_list = msg.lower().split()
-    for i in range(1, len(msg_list)):
-        unit = msg_list[i]
-        if unit in UNITS:
-            num = msg_list[i-1]
-            if INTEGER_REGEX.match(num) or FLOAT_REGEX.match(num):
-                num = float(num)
-            else:
-                continue
-            converted_num, converted_unit = convert(num, unit)
-            units_to_print.append((num, unit, converted_num, converted_unit))
+    if (len(msg_list) == 1 and msg_list[0] == BOT_HANDLE) or len(msg_list) < 4:
+        write_help()
+        return None
+    units_to_print = None
+    unit = msg_list[2]
+    if unit in UNITS:
+        num = msg_list[1]
+        if INTEGER_REGEX.match(num) or FLOAT_REGEX.match(num):
+            num = float(num)
+        else:
+            raise ValueError("Bad number to convert")
+        converted_unit = msg_list[3]
+        if converted_unit not in UNITS:
+            raise ValueError("Bad result unit")
+        converted_num = convert(num, unit, converted_unit)
+        units_to_print = (num, unit, converted_num, converted_unit)
+    else:
+        raise ValueError("Bad unit to convert")
     return units_to_print
 
-
-def convert(number: int | float, unit: str):
+def convert(number: int | float, unit: str, converted_unit: str):
     pass
