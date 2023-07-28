@@ -1,6 +1,10 @@
 # local imports
 from constants import *
 from conversion import *
+from connect_to_discord import *
+
+# stdlib imports
+from sys import exit as sys_exit
 
 # TODO: implement connecting to Discord server
 
@@ -43,3 +47,11 @@ def parse_text(msg: str):
 
 def convert(number: int | float, unit: str, converted_unit: str):
     pass
+
+def main():
+    if not discord:
+        print("Connection failed. Exiting")
+        sys_exit(1)
+    
+
+main()
