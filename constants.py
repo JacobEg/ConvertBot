@@ -12,6 +12,8 @@ FLOAT_REGEX = re.compile('-?\d*\.\d+')
 
 # different units, all in lowercase
 # TODO: finish filling this out
+# TODO: consider whether or not we should accept abbreviations; will make computation
+# significantly more challenging
 TEMPERATURE_UNITS = {'celsius', 'c', 'fahrenheit', 'f', 'kelvin', 'k'}
 LENGTH_UNITS = {'feet', 'foot', 'ft', 'meter', 'metres', 'meters', 'metres', 'm', 'yard', 'yd',
                 'mile', 'miles', 'mi'}
@@ -32,3 +34,12 @@ PREFIXES = {'exa': 18, 'peta': 15, 'tera': 12, 'giga': 9, 'mega': 6, 'kilo': 3, 
 BOT_HANDLE = "@convertbot"
 
 HELP_MESSAGE = "Use: {} <num> <unit_to_convert> <result_unit>".format(BOT_HANDLE)
+
+# conversion amounts
+FEET_IN_METER = 3.28084
+FEET_IN_YARD = 3.0
+FEET_IN_MILE = 5280.0
+YARDS_IN_MILE = 1760.0
+FAHRENHEIT_AT_0_CELSIUS = 32.0
+KELVIN_AT_0_CELSIUS = 273.15
+CELSIUS_PER_FAHRENHEIT = 1.8
