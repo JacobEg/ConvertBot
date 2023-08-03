@@ -12,11 +12,13 @@ import requests
 from constants import BOT_HANDLE
 
 class DiscordBot:
-    def __init__():
+    def __init__(self):
         pass
-    def write_msg(msg: str):
+
+    def write_msg(self, msg: str):
         pass
-    def read_next_prompt() -> str:
+
+    def read_next_prompt(self) -> str:
         pass
 
 discord = None
