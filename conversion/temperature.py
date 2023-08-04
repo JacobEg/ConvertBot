@@ -5,7 +5,7 @@ Implementing temperature conversions.
 from abc import ABC
 
 # my imports
-from constants import FAHRENHEIT_AT_0_CELSIUS, CELSIUS_PER_FAHRENHEIT, KELVIN_AT_0_CELSIUS
+from constants import FAHRENHEIT_AT_0_CELSIUS, FAHRENHEIT_PER_CELSIUS, KELVIN_AT_0_CELSIUS
 
 class Temperature(ABC):
     '''
@@ -20,7 +20,7 @@ class Fahrenheit(Temperature):
         super().__init__(temp)
     
     def to_celsius(self):
-        return (self._temperature - FAHRENHEIT_AT_0_CELSIUS) / CELSIUS_PER_FAHRENHEIT
+        return (self._temperature - FAHRENHEIT_AT_0_CELSIUS) / FAHRENHEIT_PER_CELSIUS
     
     def to_kelvin(self):
         return self.to_celsius() + KELVIN_AT_0_CELSIUS
@@ -30,7 +30,7 @@ class Celsius(Temperature):
         super().__init__(temp)
     
     def to_fahrenheit(self):
-        return (self._temperature * CELSIUS_PER_FAHRENHEIT) + FAHRENHEIT_AT_0_CELSIUS
+        return (self._temperature * FAHRENHEIT_PER_CELSIUS) + FAHRENHEIT_AT_0_CELSIUS
     
     def to_kelvin(self):
         return self._temperature + KELVIN_AT_0_CELSIUS
@@ -40,7 +40,7 @@ class Kelvin(Temperature):
         super().__init__(temp)
     
     def to_fahrenheit(self):
-        return  (self.to_celsius() * CELSIUS_PER_FAHRENHEIT) + FAHRENHEIT_AT_0_CELSIUS
+        return  (self.to_celsius() * FAHRENHEIT_PER_CELSIUS) + FAHRENHEIT_AT_0_CELSIUS
 
     def to_celsius(self):
         return self._temperature - KELVIN_AT_0_CELSIUS
