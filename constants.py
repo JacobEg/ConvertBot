@@ -16,7 +16,7 @@ FLOAT_REGEX = re.compile('-?\d*\.\d+')
 # significantly more challenging
 TEMPERATURE_UNITS = {'celsius', 'c', 'fahrenheit', 'f', 'kelvin', 'k'}
 LENGTH_UNITS = {'feet', 'foot', 'ft', 'meter', 'metres', 'meters', 'metres', 'm', 'yard', 'yd',
-                'mile', 'miles', 'mi'}
+                'mile', 'miles', 'mi', 'inch', 'inches', 'in'}
 MASS_UNITS = {'pound', 'pounds', 'lb', 'lbs', 'gram', 'g', 'ounce', 'ounces', 'oz'}
 AREA_UNITS = {'sq_ft', 'sq_m', 'square_foot', 'square_feet', 'square_meter', 'square_metre',
               'square_meters', 'square_metres'}
@@ -36,10 +36,11 @@ BOT_HANDLE = "@convertbot"
 HELP_MESSAGE = "Use: {} <num> <unit_to_convert> <result_unit>".format(BOT_HANDLE)
 
 # conversion amounts
-FEET_IN_METER = 3.28084
-FEET_IN_YARD = 3.0
-FEET_IN_MILE = 5280.0
-YARDS_IN_MILE = 1760.0
+FEET_PER_METER = 3.28084
+FEET_PER_YARD = 3.0
+FEET_PER_MILE = 5280.0
+YARDS_PER_MILE = 1760.0
+INCHES_PER_FOOT = 12.0
 FAHRENHEIT_AT_0_CELSIUS = 32.0
 KELVIN_AT_0_CELSIUS = 273.15
 FAHRENHEIT_PER_CELSIUS = 1.8
