@@ -13,6 +13,9 @@ class Mass(ABC):
     def __init__(self, mass: float) -> None:
         super().__init__()
         self._mass = mass
+    
+    def get_mass(self) -> float:
+        return self._mass
 
 class Gram(Mass):
     def __init__(self, mass: float, prefix: str) -> None:
@@ -30,6 +33,10 @@ class Gram(Mass):
         if not prefix:
             return self._gram
         return to_prefixed_val(self._gram, prefix)
+    
+    def __str__(self) -> str:
+        suffix = 's' if self._mass != 1.0 else ''
+        return '{} {}gram{}'.format(self._mass, self._prefix, suffix)
 
 class Pound(Mass):
     def __init__(self, mass: float) -> None:
@@ -40,6 +47,10 @@ class Pound(Mass):
 
     def to_ounce(self):
         return self._mass * OUNCES_PER_POUND
+    
+    def __str__(self) -> str:
+        suffix = 's' if self._mass != 1.0 else ''
+        return '{} pound{}'.format(self._mass, suffix)
 
 class Ounce(Mass):
     def __init__(self, mass: float) -> None:
@@ -50,3 +61,7 @@ class Ounce(Mass):
 
     def to_pound(self):
         return self._mass / OUNCES_PER_POUND
+    
+    def __str__(self) -> str:
+        suffix = 's' if self._mass != 1.0 else ''
+        return '{} ounce{}'.format(self._mass, suffix)

@@ -23,12 +23,14 @@ def to_prefixed_val(base_val: float, prefix: str) -> float:
     E.g. base_val = 1000, prefix = 'kilo', result will be 1 since there are 1000 meters in 1
     kilometer
     '''
+    if not prefix:
+        return base_val
     #prefix = prefix.lower()
     if prefix not in PREFIXES:
         raise ValueError('"{}" is not a valid metric prefix'.format(prefix))
     return base_val / 10**PREFIXES[prefix]
 
-def is_valid_unit(unit: str):
+def is_valid_unit(unit: str) -> bool:
     '''
     Return True if unit is a valid unit accepted by the bot, False otherwise.
     '''
