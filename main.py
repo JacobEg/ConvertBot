@@ -1,3 +1,6 @@
+'''
+Main file for program.
+'''
 # local imports
 from constants import *
 from conversion import *
