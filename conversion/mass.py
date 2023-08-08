@@ -30,8 +30,6 @@ class Gram(Mass):
         return self._gram / GRAMS_PER_OUNCE
 
     def to_other_metric(self, prefix: str):
-        if not prefix:
-            return self._gram
         return to_prefixed_val(self._gram, prefix)
     
     def __str__(self) -> str:
