@@ -32,8 +32,9 @@ PREFIXES = {'exa': 18, 'peta': 15, 'tera': 12, 'giga': 9, 'mega': 6, 'kilo': 3, 
             'femto': -15, 'atto': -18}
 
 BOT_HANDLE = "@convertbot"
-
 HELP_MESSAGE = "Use: {} <num> <unit_to_convert> <result_unit>".format(BOT_HANDLE)
+API_BASE_URL = 'https://discord.com/api'
+API_VERSION = 10 # current API is at version 10
 
 # conversion amounts
 FEET_PER_METER = 3.28084
